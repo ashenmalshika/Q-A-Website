@@ -12,32 +12,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
   <div class="container">
     <h1>Register</h1>
-    <form action="#" method="post"> <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" required>
+    <form action="#" method="post"> 
+      <div class="form-group">
+        <input type="text" id="firstname" name="firstname" placeholder="First Name" required>
       </div>
       <div class="form-group">
-        <label for="firstname">First Name</label>
-        <input type="text" id="firstname" name="firstname" required>
+        <input type="text" id="lastname" name="lastname" placeholder="Last Name" required>
       </div>
       <div class="form-group">
-        <label for="lastname">Last Name</label>
-        <input type="text" id="lastname" name="lastname" required>
+        <input type="text" id="email" name="email" placeholder="E-mail" required>
       </div>
       <div class="form-group">
-        <label for="email">E-mail</label>
-        <input type="email" id="email" name="email" required>
+        <input type="text" id="username" name="username" placeholder="Username" required>
       </div>
       <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
+        <input type="password" id="password" name="password" placeholder="Password" required>
         <i class="fas fa-eye" id="togglePassword"></i> </div>
       <div class="form-group">
         <label for="profilePic">Attach a Profile Picture</label>
         <input type="file" id="profilePic" name="profilePic">
       </div>
-      <button type="submit">Register</button>
+      <div class="button-container">
+        <button type="submit">Submit</button>
+      </div>
     </form>
+    <div class="login-account">
+      <a href="<?php echo base_url('login'); ?>" > Already have an account. Login</a>
+    </div>
   </div>
+
   <script src="https://kit.fontawesome.com/your_fontawesome_kit_id.js" crossorigin="anonymous"></script> </body>
 </html>
