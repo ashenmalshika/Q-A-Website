@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
   <div class="container">
     <h1>Register</h1>
-    <form action="#" method="post"> 
+    <form action="Welcome/register" method="post"> 
       <div class="form-group">
         <input type="text" id="firstname" name="firstname" placeholder="First Name" required>
       </div>

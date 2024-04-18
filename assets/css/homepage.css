@@ -83,3 +83,13 @@ button[type="submit"]:hover {
     font-size: 14px;
     color: #aaa;
 }
+
+.msg {
+    background: #F2DEDE;
+    color: #A94442;
+    padding: 8px;
+    width: 95%;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}

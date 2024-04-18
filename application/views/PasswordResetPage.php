@@ -14,25 +14,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="header">
             <img src="logo.png" alt="Logo" class="logo">
             <h1>Q & A</h1>
-            <p>Find solutions, share knowledge, and connect with tech Experts.</p>
         </div>
-        <form action="Login/LoginUser" method="post">
+        <form action="Login/SendOTP" method="post">
             <div class="form-group">
                 <input type="text" id="username" name="username" placeholder="Username" value="<?php echo set_value('username');?>">
             </div>
+            <p>Enter your username to reset password</p>
             <div class="form-group">
-                <input type="password" id="password" name="password" placeholder="Password">
+                <button type="submit">Send OTP</button>
             </div>
-            <?php if ($this->session->flashdata('msg')): ?>
-                <div class="msg"><?php echo $this->session->flashdata('msg'); ?></div>
-            <?php endif; ?>
-            <div class="form-group">
-                <button type="submit">Log In</button>
-            </div>
-            <a class="psw" href="<?php echo base_url('reset_password'); ?>" >Forgot password?</a>
         </form>
         <div class="create-account">
-            <a href="<?php echo base_url('register'); ?>" > Create an account</a>
+            <a href="<?php echo base_url('login'); ?>" > Back to Login</a>
         </div>
     </div>
 </body>
