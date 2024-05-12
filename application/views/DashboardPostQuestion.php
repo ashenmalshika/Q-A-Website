@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,37 +21,37 @@
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
-				<a href="#">
+				<a href="<?php echo base_url('logout'); ?>">
 					<i class='bx bx-home-alt' ></i>
 					<span class="text">Home</span>
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="<?php echo base_url('logout'); ?>">
 					<i class='bx bx-search' ></i>
 					<span class="text">Search Question</span>
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="<?php echo base_url('logout'); ?>">
 					<i class='bx bx-repost' ></i>
 					<span class="text">Post a Question</span>
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="<?php echo base_url('logout'); ?>">
 					<i class='bx bxs-file-find' ></i>
 					<span class="text">View My Questions</span>
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="<?php echo base_url('logout'); ?>">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Profile</span>
 				</a>
 			</li>
             <li>
-				<a href="#" class="logout">
+				<a href="<?php echo base_url('logout'); ?>" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -68,7 +67,10 @@
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-			<a href="#" class="nav-link">Categories</a>
+            <a href="#" class="profile">
+				<img src="<?php echo $profilepic; ?>">
+			</a>
+			<a href="#" class="nav-link"><?php echo $firstname." ".$lastname; ?></a>
 			<form action="#">
 				<div class="form-input">
 					<input type="search" placeholder="Search...">
@@ -77,13 +79,7 @@
 			</form>
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a>
-			<a href="#" class="profile">
-				<img src="img/people.png">
-			</a>
+			<a href="#" class="nav-link">About Us</a>
 		</nav>
 		<!-- NAVBAR -->
 
@@ -92,7 +88,8 @@
 			<div class="head-title">
 				<div class="left">
 					<h1>Dashboard</h1>
-                    <?php echo $firstname." ".$lastname; ?>
+                    <?php echo $user_id; ?>
+                    
 					<ul class="breadcrumb">
 						<li>
 							<a href="#">Dashboard</a>

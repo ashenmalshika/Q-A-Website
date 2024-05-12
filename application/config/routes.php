@@ -56,3 +56,5 @@ $route['register'] = 'Register/register_account';
 $route['login'] = 'welcome';
 $route['logout'] = 'Login/LogoutUser';
 $route['reset_password'] = 'Login/ResetPassword';
+
+$route['postQuestion'] = 'Dashboard/PostQuestion';
