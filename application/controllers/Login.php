@@ -26,11 +26,14 @@ class Login extends CI_Controller{
                 $userdata=array(
                     'user_id'=>$result->id,
                     'name'=>$result->username,
+                    'firstname'=>$result->first_name,
+                    'lastname'=>$result->last_name,
+                    'profilepic'=>$result->profile_picture,
                     'loggedin'=>TRUE
                 );
                 $this->session->set_userdata($userdata);
                 $this->session->set_flashdata('Welcomemsg','Welcome to Dashboard..!');
-                $this->load->view('Dashboard');
+                $this->load->view('Dashboard4',$userdata);
 
             }else{
                 $this->session->set_flashdata('msg','Username or Password Incorrect.');
@@ -41,7 +44,7 @@ class Login extends CI_Controller{
         $this->session->unset_userdata('user_id');
         $this->session->unset_userdata('admin_name');
         $this->session->unset_userdata('loggedin');
-        redirect('Welcome/Login');
+        redirect('Welcome');
     }
     
     public function ResetPassword(){

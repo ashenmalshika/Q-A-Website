@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,7 +51,7 @@
 				</a>
 			</li>
             <li>
-				<a href="#" class="logout">
+				<a href="<?php echo base_url('logout'); ?>" class="logout">
 					<i class='bx bxs-log-out-circle' ></i>
 					<span class="text">Logout</span>
 				</a>
@@ -68,7 +67,10 @@
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu' ></i>
-			<a href="#" class="nav-link">Categories</a>
+            <a href="#" class="profile">
+				<img src="<?php echo $profilepic; ?>">
+			</a>
+			<a href="#" class="nav-link"><?php echo $firstname." ".$lastname; ?></a>
 			<form action="#">
 				<div class="form-input">
 					<input type="search" placeholder="Search...">
@@ -77,22 +79,23 @@
 			</form>
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="notification">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</a>
-			<a href="#" class="profile">
-				<img src="img/people.png">
-			</a>
+			<a href="#" class="nav-link">About Us</a>
 		</nav>
 		<!-- NAVBAR -->
 
 		<!-- MAIN -->
 		<main>
 			<div class="head-title">
+                <img src="<?php echo $profilepic; ?>">
+                <?php 
+                    $base64Image = base64_encode($profilepic); 
+                    echo $base64Image;
+                    ?>
+                    <img src="data:image/jpeg;base64,<?php echo  $base64Image; ?>" alt="Image">
 				<div class="left">
 					<h1>Dashboard</h1>
                     <?php echo $firstname." ".$lastname; ?>
+                    
 					<ul class="breadcrumb">
 						<li>
 							<a href="#">Dashboard</a>
