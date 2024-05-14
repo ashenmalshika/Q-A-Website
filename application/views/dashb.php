@@ -13,75 +13,8 @@
 </head>
 <body>
 
-	<!-- SIDEBAR -->
-	<section id="sidebar">
-		<a href="#" class="brand">
-			<i class='bx bxs-smile'></i>
-			<span class="text">Q & A </span>
-		</a>
-		<ul class="side-menu top">
-			<li class="active">
-				<a href="<?php echo base_url('logout'); ?>">
-					<i class='bx bx-home-alt' ></i>
-					<span class="text">Home</span>
-				</a>
-			</li>
-			<li>
-				<a href="<?php echo base_url('logout'); ?>">
-					<i class='bx bx-search' ></i>
-					<span class="text">Search Question</span>
-				</a>
-			</li>
-			<li>
-				<a href="<?php echo base_url('postQuestion'); ?>">
-					<i class='bx bx-repost' ></i>
-					<span class="text">Post a Question</span>
-				</a>
-			</li>
-			<li>
-				<a href="<?php echo base_url('logout'); ?>">
-					<i class='bx bxs-file-find' ></i>
-					<span class="text">View My Questions</span>
-				</a>
-			</li>
-			<li>
-				<a href="<?php echo base_url('logout'); ?>">
-					<i class='bx bxs-group' ></i>
-					<span class="text">Profile</span>
-				</a>
-			</li>
-            <li>
-				<a href="<?php echo base_url('logout'); ?>" class="logout">
-					<i class='bx bxs-log-out-circle' ></i>
-					<span class="text">Logout</span>
-				</a>
-			</li>
-		</ul>
-	</section>
-	<!-- SIDEBAR -->
-
-
-
 	<!-- CONTENT -->
 	<section id="content">
-		<!-- NAVBAR -->
-		<nav>
-			<i class='bx bx-menu' ></i>
-            <a href="#" class="profile">
-				<img src="<?php echo $profilepic; ?>">
-			</a>
-			<a href="#" class="nav-link"><?php echo $firstname." ".$lastname; ?></a>
-			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-			<a href="#" class="nav-link">About Us</a>
-		</nav>
-		<!-- NAVBAR -->
 
 		<!-- MAIN -->
 		<main>

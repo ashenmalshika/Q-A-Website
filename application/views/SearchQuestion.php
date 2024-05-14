@@ -9,7 +9,7 @@
 	<!-- My CSS -->
     <link rel="stylesheet" href="<?php echo base_url('assets/css/dashboard4.css') ?>">
 
-	<title>Dashboard</title>
+	<title>Search Question</title>
 </head>
 <body>
 
@@ -20,32 +20,32 @@
 			<span class="text">Q & A </span>
 		</a>
 		<ul class="side-menu top">
-			<li class="active">
-				<a href="<?php echo base_url('logout'); ?>">
+			<li >
+				<a href="<?php echo base_url('home'); ?>">
 					<i class='bx bx-home-alt' ></i>
 					<span class="text">Home</span>
 				</a>
 			</li>
-			<li>
-				<a href="<?php echo base_url('logout'); ?>">
+			<li class="active">
+				<a href="<?php echo base_url('searchQuestion'); ?>">
 					<i class='bx bx-search' ></i>
 					<span class="text">Search Question</span>
 				</a>
 			</li>
 			<li>
-				<a href="<?php echo base_url('logout'); ?>">
+				<a href="<?php echo base_url('postQuestion'); ?>">
 					<i class='bx bx-repost' ></i>
 					<span class="text">Post a Question</span>
 				</a>
 			</li>
 			<li>
-				<a href="<?php echo base_url('logout'); ?>">
+				<a href="<?php echo base_url('viewQuestion'); ?>">
 					<i class='bx bxs-file-find' ></i>
 					<span class="text">View My Questions</span>
 				</a>
 			</li>
 			<li>
-				<a href="<?php echo base_url('logout'); ?>">
+				<a href="<?php echo base_url('viewProfile'); ?>">
 					<i class='bx bxs-group' ></i>
 					<span class="text">Profile</span>
 				</a>
@@ -79,6 +79,7 @@
 			</form>
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
+			<?php echo $user_id; ?>
 			<a href="#" class="nav-link">About Us</a>
 		</nav>
 		<!-- NAVBAR -->

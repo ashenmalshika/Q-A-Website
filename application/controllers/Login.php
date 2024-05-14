@@ -33,7 +33,14 @@ class Login extends CI_Controller{
                 );
                 $this->session->set_userdata($userdata);
                 $this->session->set_flashdata('Welcomemsg','Welcome to Dashboard..!');
-                $this->load->view('Dashboard4',$userdata);
+                $this->session->set_userdata('user_details', $userdata);
+
+                // Prevent page caching
+                $this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+                $this->output->set_header('Cache-Control: post-check=0, pre-check=0', false);
+                $this->output->set_header('Pragma: no-cache');
+
+                $this->load->view('DashboardHome',$userdata);
 
             }else{
                 $this->session->set_flashdata('msg','Username or Password Incorrect.');
@@ -41,7 +48,7 @@ class Login extends CI_Controller{
             }
         }
     }public function LogoutUser(){
-        $this->session->unset_userdata('user_id');
+        $this->session->unset_userdata($userdata);
         $this->session->unset_userdata('admin_name');
         $this->session->unset_userdata('loggedin');
         redirect('Welcome');

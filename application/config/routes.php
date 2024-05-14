@@ -57,4 +57,8 @@ $route['login'] = 'welcome';
 $route['logout'] = 'Login/LogoutUser';
 $route['reset_password'] = 'Login/ResetPassword';
 
+$route['home'] = 'Dashboard/Home';
 $route['postQuestion'] = 'Dashboard/PostQuestion';
+$route['searchQuestion'] = 'Dashboard/SearchQuestion';
+$route['viewQuestion'] = 'Dashboard/ViewQuestion';
+$route['viewProfile'] = 'Dashboard/ViewProfile';
