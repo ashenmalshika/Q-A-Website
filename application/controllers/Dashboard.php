@@ -10,7 +10,12 @@ class Dashboard extends CI_Controller {
 	public function Home()
 	{
 		$userdata = $this->session->userdata('user_details');
-		$this->load->view('DashboardHome',$userdata);
+
+		$this->load->model('GetDataModel');
+		$data['questions'] = $this->GetDataModel->getAllQuestionData();
+		$data['userdata']= $userdata;
+				
+		$this->load->view('DashboardHome',$data);
 	}
 	public function PostQuestion()
 	{

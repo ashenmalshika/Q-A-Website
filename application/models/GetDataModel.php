@@ -8,5 +8,10 @@ class GetDataModel extends CI_Model{
 
     }
 
+    function getAllQuestionData(){
+        $query = $this->db->get('questions');
+        return $query->result_array(); // Returning the results as an array 
+    }
+
 }
 ?>

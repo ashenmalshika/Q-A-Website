@@ -40,7 +40,11 @@ class Login extends CI_Controller{
                 $this->output->set_header('Cache-Control: post-check=0, pre-check=0', false);
                 $this->output->set_header('Pragma: no-cache');
 
-                $this->load->view('DashboardHome',$userdata);
+                $this->load->model('GetDataModel');
+                $data['questions'] = $this->GetDataModel->getAllQuestionData();
+                $data['userdata']= $userdata;
+
+                $this->load->view('DashboardHome',$data);
 
             }else{
                 $this->session->set_flashdata('msg','Username or Password Incorrect.');

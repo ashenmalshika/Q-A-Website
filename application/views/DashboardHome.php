@@ -130,9 +130,9 @@
 		<nav>
 			<i class='bx bx-menu' ></i>
             <a href="#" class="profile">
-				<img src="<?php echo $profilepic; ?>">
+				<img src="<?php echo ($userdata['profilepic']); ?>">
 			</a>
-			<a href="#" class="nav-link"><?php echo $firstname." ".$lastname; ?></a>
+			<a href="#" class="nav-link"><?php echo ($userdata['firstname'])." ".($userdata['lastname']); ?></a>
 			<form action="#">
 				<div class="form-input">
 					<input type="search" placeholder="Search...">
@@ -141,7 +141,7 @@
 			</form>
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
-			<?php echo $user_id; ?>
+			<?php echo ($userdata['user_id']); ?>
 			<a href="#" class="nav-link">About Us</a>
 		</nav>
 		<!-- NAVBAR -->
