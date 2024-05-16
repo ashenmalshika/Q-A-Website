@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -55,22 +54,42 @@
     }
 
 
-    .button {
-        padding: 5px 10px;
-        background-color: #4CAF50; /* Green background */
-        color: white; /* White text color */
-        border: none; /* No borders */
-        border-radius: 5px; /* Rounded borders */
-        cursor: pointer; /* Pointer cursor on hover */
-        font-size: 15px;
-		align-items:left;
-		margin-right: auto;
-    }
 
+	.answerButton {
+            padding: 5px 10px;
+            background-color: #4CAF50; /* Green background */
+            color: white; /* White text color */
+            border: none; /* No borders */
+            border-radius: 5px; /* Rounded borders */
+            cursor: pointer; /* Pointer cursor on hover */
+            font-size: 15px;
+            display: inline-block; /* Inline block to respect margins */
+	
+        }
 
-    .button:hover {
+    .answerButton:hover {
         background-color: #45a049; /* Darker green background on hover */
     }
+	.sendButton {
+    background-color: #3C91E6; /* Green background */
+    color: white; /* White text color */
+    border: none; /* No borders */
+    border-radius: 5px; /* Rounded borders */
+    font-size: 15px; /* Font size */
+	padding: 5px 10px;
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transitions */
+	margin-top:10px;
+}
+.viewAnswers {
+         
+            font-size: 14px; /* Font size */
+            cursor: pointer; /* Pointer cursor on hover */
+            /* Left margin */
+            display: inline-block; /* Inline block to respect margins */
+			margin-right: auto;
+			margin-left:14px;
+        }
 	</style>
 </head>
 <body>
@@ -153,17 +172,18 @@
 						<div class="table-data">
 							<div class="data">
 								<?php echo htmlspecialchars($question['question']); ?>
-						
-								<div class="question-stats">
-									
-									<button class="button">Answers</button>
+								<div class="question-stats">			
+									<button class="answerButton" id="answerButton<?php echo $question['id']; ?>">Answer</button>
+									<a href="" class="viewAnswers">View Answers</a>
 									<span>posted on 25th January 2024</span>
 									<span>1</span>
-									<span>4</span>
+									<span>4</span>								
 								</div>
-								
+								<div id="answerForm<?php echo $question['id']; ?>" style="display: none;">
+									<textarea id="answerText<?php echo $question['id']; ?>" placeholder="Write your answer..."></textarea>
+									<button class="sendButton" id="sendButton<?php echo $question['id']; ?>">Send</button>
+								</div>
 							</div> 
-							 
 						</div>
 					<?php endforeach; ?>
 				<?php else: ?>
@@ -177,6 +197,68 @@
 	
 
 	<script src="<?php echo base_url('assets/javascript/dashboard4.js') ?>"></script>
+	<script>
+		
+		document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.answerButton');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+            const questionId = this.id.replace('answerButton', '');
+            const answerForm = document.getElementById('answerForm' + questionId);
+
+            if (answerForm.style.display === 'none') {
+                answerForm.style.display = 'block';
+            } else {
+                answerForm.style.display = 'none';
+            }
+        });
+    });
+
+    const sendButtons = document.querySelectorAll('[id^="sendButton"]');
+
+    sendButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const questionId = this.id.replace('sendButton', '');
+            const answerText = document.getElementById('answerText' + questionId).value;
+            const userId = <?php echo json_encode($userdata['user_id']); ?>; //user ID of the answerer
+
+            // Log the values to check
+            console.log("Question ID:", questionId);
+            console.log("Answer Text:", answerText);
+            console.log("User ID:", userId);
+
+            // AJAX request to CodeIgniter controller
+            fetch('<?php echo site_url('Answers/SaveAnswers'); ?>', {
+                method: 'POST',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    'questionId': questionId,
+                    'answerText': answerText,
+                    'userId': userId
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert(data.message); // Show success message
+                    // Optionally, clear the textarea or hide the form
+                    document.getElementById('answerText' + questionId).value = '';
+                    document.getElementById('answerForm' + questionId).style.display = 'none';
+                } else {
+                    alert(data.message); // Show error message
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    });
+});
+
+	</script>
+
 
 </body>
 </html>

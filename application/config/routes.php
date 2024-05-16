@@ -62,3 +62,5 @@ $route['postQuestion'] = 'Dashboard/PostQuestion';
 $route['searchQuestion'] = 'Dashboard/SearchQuestion';
 $route['viewQuestion'] = 'Dashboard/ViewQuestion';
 $route['viewProfile'] = 'Dashboard/ViewProfile';
+
+$route['saveAnswer'] = 'Answers/saveAnswers';
