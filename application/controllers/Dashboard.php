@@ -31,7 +31,7 @@ class Dashboard extends CI_Controller {
 	{
 		$userdata = $this->session->userdata('user_details');
 
-		$user_id = $userdata['user_id']; // Static user_id for demonstration
+		$user_id = $userdata['user_id']; 
         $this->load->model('GetDataModel');
     
         $data['questions'] = $this->GetDataModel->getQuestionData($user_id);

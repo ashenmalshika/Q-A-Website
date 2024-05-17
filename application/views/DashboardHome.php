@@ -15,6 +15,7 @@
 	<style>
 		.data{
 			width:800px;
+			background-color:#cce0ff;
 		}
 		.question-stats {
     color: #666;
@@ -28,6 +29,7 @@
 }
 .data{
 	border:1px solid #3C91E6;
+	
 }
 
 .question-stats span {
@@ -37,7 +39,7 @@
     padding: 2px 8px;
 }
 		.question-card {
-        background-color: #f4f4f4;
+        background-color:#cce0ff;
         border: 1px solid #dcdcdc;
         padding: 10px 20px;
         margin: 10px;
@@ -79,10 +81,11 @@
 	padding: 5px 10px;
     cursor: pointer; /* Pointer cursor on hover */
     transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transitions */
-	margin-top:10px;
+	margin-top:15px;
 }
+
 .viewAnswers {
-         
+			
             font-size: 14px; /* Font size */
             cursor: pointer; /* Pointer cursor on hover */
             /* Left margin */
@@ -90,6 +93,18 @@
 			margin-right: auto;
 			margin-left:14px;
         }
+
+.answers{
+	font-size: 14px;
+	margin-top:15px;
+	border-radius: 8px;
+	padding: 10px;
+	border:1px solid #3C91E6;
+	background-color:white;
+}
+hr{
+	margin:10px 0px 10px 0px;
+}
 	</style>
 </head>
 <body>
@@ -174,15 +189,16 @@
 								<?php echo htmlspecialchars($question['question']); ?>
 								<div class="question-stats">			
 									<button class="answerButton" id="answerButton<?php echo $question['id']; ?>">Answer</button>
-									<a href="" class="viewAnswers">View Answers</a>
-									<span>posted on 25th January 2024</span>
-									<span>1</span>
-									<span>4</span>								
+									<a href="#" class="viewAnswers" id="question<?php echo $question['id']; ?>">View Answers</a>
+									<span>posted on <?php echo date('d F Y', strtotime($question['created_at'])); ?></span>
+									<span>Answers : <?php echo $question['answer_count']; ?></span>
+													
 								</div>
 								<div id="answerForm<?php echo $question['id']; ?>" style="display: none;">
 									<textarea id="answerText<?php echo $question['id']; ?>" placeholder="Write your answer..."></textarea>
 									<button class="sendButton" id="sendButton<?php echo $question['id']; ?>">Send</button>
 								</div>
+								<div class="answersContainer" id="answersContainer<?php echo $question['id']; ?>"></div>
 							</div> 
 						</div>
 					<?php endforeach; ?>
@@ -258,6 +274,62 @@
 });
 
 	</script>
+	<script>
+	document.addEventListener('DOMContentLoaded', function() {
+    const viewAnswerLinks = document.querySelectorAll('.viewAnswers');
+
+    viewAnswerLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent the default action of the link
+
+            const questionId = this.id.replace('question', '');
+            const answersContainer = document.getElementById('answersContainer' + questionId);
+
+            // Toggle display of the answers container
+            if (answersContainer.style.display === 'block') {
+                answersContainer.style.display = 'none';
+                return;
+            } else {
+                answersContainer.style.display = 'block';
+            }
+
+            // AJAX request to fetch answers if the container is shown
+            fetch('<?php echo site_url('Answers/getAnswers'); ?>', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    'questionId': questionId
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    // Display answers
+                    let answersHtml = '';
+                    data.answers.forEach(answer => {
+                        const date = new Date(answer.created_at);
+                        const formattedDate = date.toLocaleDateString(); // Format the date
+                        answersHtml += `<p class="answers">${answer.content}<br>(${answer.username} on ${formattedDate} ) </p>`;
+                    });
+                    answersContainer.innerHTML = answersHtml;
+
+					// Update answer count
+                    const answerCountElement = document.querySelector(`#question${questionId} ~ span.answer-count`);
+                    if (answerCountElement) {
+                        answerCountElement.textContent = data.answers.length;
+                    }
+                } else {
+                    answersContainer.innerHTML = '<p class="answers">No answers found.</p>';
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    });
+});
+
+</script>
 
 
 </body>
