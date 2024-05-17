@@ -29,4 +29,17 @@ class Questions extends CI_Controller {
         $this->load->view('PostQuestion',$userdata);
     }
 
+    public function search() {
+        $query = $this->input->post('query');
+
+        $this->load->model('GetDataModel');
+        $questions = $this->GetDataModel->searchQuestions($query);
+        
+        if ($questions) {
+            echo json_encode(array('status' => 'success', 'questions' => $questions));
+        } else {
+            echo json_encode(array('status' => 'error', 'message' => 'No questions found.'));
+        }
+    }
+
 }

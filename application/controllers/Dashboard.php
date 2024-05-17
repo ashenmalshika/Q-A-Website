@@ -25,7 +25,12 @@ class Dashboard extends CI_Controller {
 	public function SearchQuestion()
 	{
 		$userdata = $this->session->userdata('user_details');
-		$this->load->view('SearchQuestion',$userdata);
+
+		$this->load->model('GetDataModel');
+		$data['questions'] = $this->GetDataModel->getAllQuestionData();
+		$data['userdata']= $userdata;
+
+		$this->load->view('SearchQuestion',$data);
 	}
 	public function ViewQuestion()
 	{
