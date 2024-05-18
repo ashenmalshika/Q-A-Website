@@ -37,5 +37,13 @@ class GetDataModel extends CI_Model{
         }
     }
 
+    function getUserData($user_id){
+        $this->db->select('id, username, email, profession, biography');
+        $this->db->where('id', $user_id);
+        $query = $this->db->get('users');
+        return  $query->row_array(); // Returning the results as an array 
+
+    }
+
 }
 ?>

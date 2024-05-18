@@ -47,7 +47,14 @@ class Dashboard extends CI_Controller {
 	public function ViewProfile()
 	{
 		$userdata = $this->session->userdata('user_details');
-		$this->load->view('ViewProfile',$userdata);
+
+		$user_id = $userdata['user_id']; 
+        $this->load->model('GetDataModel');
+
+		$data['leftUserData'] = $this->GetDataModel->getUserData($user_id);
+		$data['userdata']= $userdata;
+
+		$this->load->view('ViewProfile',$data);
 	}
 
 }
