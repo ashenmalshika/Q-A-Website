@@ -22,6 +22,7 @@
     color: white;
     text-align: center;
 	margin-left:20px;
+	margin-bottom:40px;
 }
 
 .profile-header {
@@ -91,6 +92,45 @@
 
         .biography-text {
             text-align: justify;   
+        }
+		.modal-header{
+			padding: 20px 0 20px 0;
+			font-weight: bold;
+			font-size: 24px;
+		}
+		form{
+			text-align: justify;  
+			margin-left:20px;
+		}
+		input{
+			padding:5px;
+			border-radius:10px;
+			width:250px;
+			border:none;
+		}
+		label{
+			margin-top:7px;
+		}
+		textarea {
+        width: 100%;
+        height: auto; 
+        padding: 10px;
+        border-radius: 7px;
+        margin-top: 18px;
+        max-width: 450px;
+		font-size:14px;
+		border:none;
+    }
+	#cancelBtn , #saveBtn {
+            padding: 5px 10px;
+            background-color: #4CAF50; 
+            color: white; 
+            border: none; 
+            border-radius: 5px;
+            cursor: pointer; 
+            font-size: 16px;
+            display: inline-block; 
+			margin-right:18px;
         }
 </style>
 </head>
@@ -178,30 +218,58 @@
 					</div>
 				</div>
 				<div class="profile-buttons">
-					<button class="btn edit-btn">Edit Profile</button>
-					<button class="btn remove-btn">Remove Profile</button>
+					<button class="btn edit-btn" id="editProfileBtn">Edit Profile</button>
+					<form id="removeProfileForm" action="<?php echo base_url('Dashboard/removeProfile'); ?>" method="post">
+						<input type="hidden" name="user_id" value="<?php echo $userdata['user_id']; ?>">
+						<button type="submit" class="btn remove-btn" onclick="return confirm('Are you sure you want to remove your profile? Your account will be lost');">Remove Profile</button>
+					</form>
 				</div>
 				<table class="profile-details">
-        <tr>
-            <th>Username</th>
-            <td>: <?php echo $leftUserData['username']; ?></td>
-        </tr>
-        <tr>
-            <th>Email</th>
-            <td>: <?php echo $leftUserData['email']; ?></td>
-        </tr>
-        <tr>
-            <th>Profession</th>
-            <td>: <?php echo $leftUserData['profession']; ?></td>
-        </tr>
-        <tr>
-            <th>Biography</th>
-            <td class="biography-text">: <?php echo $leftUserData['biography']; ?></td>
-        </tr>
-    </table>
+					<tr>
+						<th>Username</th>
+						<td>: <?php echo $leftUserData['username']; ?></td>
+					</tr>
+					<tr>
+						<th>Email</th>
+						<td>: <?php echo $leftUserData['email']; ?></td>
+					</tr>
+					<tr>
+						<th>Profession</th>
+						<td>: <?php echo $leftUserData['profession']; ?></td>
+					</tr>
+					<tr>
+						<th>Biography</th>
+						<td class="biography-text">: <?php echo $leftUserData['biography']; ?></td>
+					</tr>
+    			</table>
+	</div>
+	
+	<div id="editProfileModal" class="modal" style="display:none; ">
+	<div class="profile-card">
+				<div class="modal-content">
+					<div class="modal-header">
+						<span>Edit Profile</span>
+					</div>
+					<form action="Dashboard/updateProfile" method="post"> 
+						<label for="username">Username : </label>
+						<input type="text" id="username" name="username" value="<?php echo $leftUserData['username']; ?>"><br><br>
+						<label for="email">Email : </label>
+						<input type="email" id="email" name="email" value="<?php echo $leftUserData['email']; ?>"><br><br>
+						<label for="profession">Profession : </label>
+						<input type="text" id="profession" name="profession" value="<?php echo $leftUserData['profession']; ?>"><br><br>
+						<label for="biography">Biography : </label><br>
+						<textarea id="biography" name="biography" rows="4" cols="50"><?php echo $leftUserData['biography']; ?></textarea><br><br>
+						<div class="modal-footer">
+							<button type="button" id="cancelBtn">Cancel</button>
+							<button type="submit" id="saveBtn">Save</button>
+						</div>
+					</form>
+				</div>
 			</div>
 
+			</div>
 
+			
 
 
 		</main>
@@ -211,6 +279,28 @@
 	
 
 	<script src="<?php echo base_url('assets/javascript/dashboard4.js') ?>"></script>
+	<script>
+// Get the elements
+var editProfileBtn = document.getElementById('editProfileBtn');
+var editProfileForm = document.getElementById('editProfileModal'); // Corrected ID
+var cancelBtn = document.getElementById('cancelBtn');
 
+// When the user clicks the button, toggle the visibility of the form and scroll to it
+editProfileBtn.onclick = function() {
+    if (editProfileForm.style.display === 'none' || editProfileForm.style.display === '') {
+        editProfileForm.style.display = 'block';
+        editProfileForm.scrollIntoView({ behavior: 'smooth' });
+    } else {
+        editProfileForm.style.display = 'none';
+    }
+}
+
+// When the user clicks on the cancel button, hide the form
+cancelBtn.onclick = function() {
+    editProfileForm.style.display = 'none';
+}
+
+
+</script>
 </body>
 </html>
