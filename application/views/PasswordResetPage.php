@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <img src="logo.png" alt="Logo" class="logo">
             <h1>Q & A</h1>
         </div>
-        <form action="Login/SendOTP" method="post">
+        <form action="#" method="post">
             <div class="form-group">
                 <input type="text" id="username" name="username" placeholder="Username" value="<?php echo set_value('username');?>">
             </div>

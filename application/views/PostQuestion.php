@@ -72,16 +72,6 @@
 				<img src="<?php echo $profilepic; ?>">
 			</a>
 			<a href="#" class="nav-link"><?php echo $firstname." ".$lastname; ?></a>
-			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-			<?php echo $user_id; ?>
-			<a href="#" class="nav-link">About Us</a>
 		</nav>
 		<!-- NAVBAR -->
 

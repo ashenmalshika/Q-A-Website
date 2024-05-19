@@ -8,153 +8,10 @@
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
     <link rel="stylesheet" href="<?php echo base_url('assets/css/dashboard4.css') ?>">
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/viewQuestion.css') ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/dashboardHome.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/searchQuestion.css') ?>">
 	<title>Search Question</title>
-	<style>
-.tags{
-	font-size:12px;
-	margin-top:5px;
-	background-color:#d1d1e0;
-	padding:1px 8px 1px 8px;
-	border-radius:7px;
-	display: inline-block;
-}
-		
-#content main form {
-    max-width: 400px;
-    width: 100%;
-    margin: 0 200px 40px;
 
-
-}
-
-#content main form .form-input {
-    display: flex;
-    align-items: center;
-    height: 36px;
-}
-
-#content main form .form-input input {
-    flex-grow: 1;
-    padding: 0 16px;
-    height: 100%;
-    border:1px solid #3C91E6;
-    background: white;
-    border-radius: 36px 0 0 36px;
-    outline: none;
-    width: 100%;
-    color: var(--dark);
-}
-
-#content main form .form-input button {
-    width: 36px;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: var(--blue);
-    color: var(--light);
-    font-size: 18px;
-    border: none;
-    outline: none;
-    border-radius: 0 36px 36px 0;
-    cursor: pointer;
-}
-
-.data{
-			width:800px;
-			background-color:#cce0ff;
-		}
-		.question-stats {
-    color: #666;
-    font-size: 14px;
-    display: flex;
-    align-items: center; /* Aligns the stats inline */
-    justify-content: flex-end; /* Pushes all items inside stats to the right */
-    flex-grow: 0; /* Prevents the stats section from growing */
-    white-space: nowrap; /* Keeps the stats inline */
-	margin-top:25px;
-}
-.data{
-	border:1px solid #3C91E6;
-	
-}
-
-.question-stats span {
-    margin-right: 5px;
-    background-color: #ddd;
-    border-radius: 5px;
-    padding: 2px 8px;
-}
-		.question-card {
-        background-color:#cce0ff;
-        border: 1px solid #dcdcdc;
-        padding: 10px 20px;
-        margin: 10px;
-        border-radius: 5px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .question-text {
-        color: #333;
-        font-size: 16px;
-        font-weight: bold;
-    }
-
-
-
-	.answerButton {
-            padding: 5px 10px;
-            background-color: #4CAF50; /* Green background */
-            color: white; /* White text color */
-            border: none; /* No borders */
-            border-radius: 5px; /* Rounded borders */
-            cursor: pointer; /* Pointer cursor on hover */
-            font-size: 15px;
-            display: inline-block; /* Inline block to respect margins */
-	
-        }
-
-    .answerButton:hover {
-        background-color: #45a049; /* Darker green background on hover */
-    }
-	.sendButton {
-    background-color: #3C91E6; /* Green background */
-    color: white; /* White text color */
-    border: none; /* No borders */
-    border-radius: 5px; /* Rounded borders */
-    font-size: 15px; /* Font size */
-	padding: 5px 10px;
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transitions */
-	margin-top:15px;
-}
-
-.viewAnswers {
-			
-            font-size: 14px; /* Font size */
-            cursor: pointer; /* Pointer cursor on hover */
-            /* Left margin */
-            display: inline-block; /* Inline block to respect margins */
-			margin-right: auto;
-			margin-left:14px;
-        }
-
-.answers{
-	font-size: 14px;
-	margin-top:15px;
-	border-radius: 8px;
-	padding: 10px;
-	border:1px solid #3C91E6;
-	background-color:white;
-}
-hr{
-	margin:10px 0px 10px 0px;
-}
-
-	</style>
 </head>
 <body>
 
@@ -216,10 +73,6 @@ hr{
 				<img src="<?php echo ($userdata['profilepic']); ?>">
 			</a>
 			<a href="#" class="nav-link"><?php echo ($userdata['firstname'])." ".($userdata['lastname']); ?></a>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-			<?php echo ($userdata['user_id']); ?>
-			<a href="#" class="nav-link">About Us</a>
 		</nav>
 		<!-- NAVBAR -->
 

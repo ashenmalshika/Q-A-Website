@@ -8,3 +8,4 @@ class RemoveUserModel extends CI_Model {
         $this->db->delete('users');
     }
 }
+?>

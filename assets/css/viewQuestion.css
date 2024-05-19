@@ -1,51 +1,51 @@
 #askQuestion, label {
-    display: block; /* Makes each element take the full width available, starting on a new line */
-    margin-bottom: 8px; /* Adds some space below each element */
+    display: block; 
+    margin-bottom: 8px;
     
 }
 textarea {
-        display: block;
-        width: 100%; /* Makes the textarea width responsive to the container's width */
-        height: auto; /* Adjust height automatically based on rows */
-        box-sizing: border-box; /* Includes padding and border in the element's total width and height */
-        padding: 8px;
-        border-radius: 4px;
-        margin-top: 18px;
-        max-width: 450px;
-    }
-    #tag{
-        margin-top:10px;
-        margin-right:10px;
-        max-width: 120px;
-        padding: 4px;
-    }
-    #tagsLabel{
-        margin-top:20px;
-    }
-    #questionImgLabel{
-        margin-top:25px;
-        margin-bottom:18px;
-    }
-    .submitQuestion {
-        display: block;
-        padding: 10px 20px; /* Adjust padding to make the button larger */
-        background-color: #007BFF; /* A nice blue color for the button */
-        color: white; /* White text color for better contrast */
-        border: none; /* No border for a modern look */
-        border-radius: 5px; /* Slightly rounded corners for a softer look */
-        cursor: pointer; /* Changes the mouse cursor to a pointer on hover */
-        font-size: 16px; /* Larger font size for better readability */
-        transition: background-color 0.3s; /* Smooth transition for hover effect */
-        margin-top:30px;
-        align-items:center;
+    display: block;
+    width: 100%; 
+    height: auto; 
+    box-sizing: border-box; 
+    padding: 8px;
+    border-radius: 4px;
+    margin-top: 18px;
+    max-width: 450px;
+}
+#tag{
+    margin-top:10px;
+    margin-right:10px;
+    max-width: 120px;
+    padding: 4px;
+}
+#tagsLabel{
+    margin-top:20px;
+}
+#questionImgLabel{
+    margin-top:25px;
+    margin-bottom:18px;
+}
+.submitQuestion {
+    display: block;
+    padding: 10px 20px; 
+    background-color: #007BFF; 
+    color: white; 
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    transition: background-color 0.3s; 
+    margin-top:30px;
+    align-items:center;
 }
 
 .submitQuestion:hover {
-    background-color: #0056b3; /* Darker shade of blue on hover for interactive feedback */
+    background-color: #0056b3; 
 }
 .button-container{
     display: flex;
-    justify-content: center; /* Centers the button horizontally in the container */
+    justify-content: center; 
     align-items: center;
 }
 .alert{
@@ -58,4 +58,99 @@ textarea {
     font-size: 14px;
     text-align:center;
 
+}
+.data{
+    width:800px;
+    background-color:#cce0ff;
+}
+.question-stats {
+color: #666;
+font-size: 14px;
+display: flex;
+align-items: center; 
+justify-content: flex-end;
+flex-grow: 0; 
+white-space: nowrap; 
+margin-top:25px;
+}
+.data{
+    border:1px solid #3C91E6;
+
+}
+
+.question-stats span {
+    margin-right: 5px;
+    background-color: #ddd;
+    border-radius: 5px;
+    padding: 2px 8px;
+}
+.question-card {
+    background-color:#cce0ff;
+    border: 1px solid #dcdcdc;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.question-text {
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.answerButton {
+    padding: 5px 10px;
+    background-color: #4CAF50; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 15px;
+    display: inline-block; 
+}
+
+.answerButton:hover {
+background-color: #45a049; 
+}
+.sendButton {
+background-color: #3C91E6;
+color: white;
+border: none;
+border-radius: 5px; 
+font-size: 15px;
+padding: 5px 10px;
+cursor: pointer; 
+transition: background-color 0.3s, box-shadow 0.3s; 
+margin-top:15px;
+}
+
+.viewAnswers {
+    font-size: 14px; 
+    cursor: pointer; 
+    display: inline-block; 
+    margin-right: auto;
+    margin-left:14px;
+}
+
+.answers{
+    font-size: 14px;
+    margin-top:15px;
+    border-radius: 8px;
+    padding: 10px;
+    border:1px solid #3C91E6;
+    background-color:white;
+}
+hr{
+    margin:10px 0px 10px 0px;
+}
+.tags{
+    font-size:12px;
+    margin-top:5px;
+    background-color:#d1d1e0;
+    padding:1px 8px 1px 8px;
+    border-radius:7px;
+    display: inline-block;
 }
