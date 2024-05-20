@@ -1,20 +1,33 @@
-// Get the elements
-var editProfileBtn = document.getElementById('editProfileBtn');
-var editProfileForm = document.getElementById('editProfileModal'); // Corrected ID
-var cancelBtn = document.getElementById('cancelBtn');
+// Define a Backbone View for the profile
+var ProfileView = Backbone.View.extend({
+    el: 'body', // Bind the view to the body element
 
-// When the user clicks the button, toggle the visibility of the form and scroll to it
-editProfileBtn.onclick = function() {
-    if (editProfileForm.style.display === 'none' || editProfileForm.style.display === '') {
-        editProfileForm.style.display = 'block';
-        editProfileForm.scrollIntoView({ behavior: 'smooth' });
-    } else {
-        editProfileForm.style.display = 'none';
+    // Define event listeners
+    events: {
+        'click #editProfileBtn': 'toggleEditProfileForm',
+        'click #cancelBtn': 'hideEditProfileForm'
+    },
+
+    // Initialize the view and cache elements
+    initialize: function() {
+        this.editProfileForm = this.$('#editProfileModal');
+    },
+
+    // Function to toggle the visibility of the edit profile form
+    toggleEditProfileForm: function() {
+        if (this.editProfileForm.css('display') === 'none' || this.editProfileForm.css('display') === '') {
+            this.editProfileForm.css('display', 'block');
+            this.editProfileForm[0].scrollIntoView({ behavior: 'smooth' });
+        } else {
+            this.editProfileForm.css('display', 'none');
+        }
+    },
+
+    // Function to hide the edit profile form
+    hideEditProfileForm: function() {
+        this.editProfileForm.css('display', 'none');
     }
-}
+});
 
-// When the user clicks on the cancel button, hide the form
-cancelBtn.onclick = function() {
-    editProfileForm.style.display = 'none';
-}
-
+// Instantiate the view
+var profileView = new ProfileView();

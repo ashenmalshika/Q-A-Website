@@ -11,6 +11,12 @@
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/viewProfile.css') ?>">
 	<title>View Profile</title>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.1/underscore-min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="<?php echo base_url('assets/javascript/backbone.js') ?>"></script>
+
+
+
 </head>
 <body>
 
