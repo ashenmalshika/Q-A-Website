@@ -1,6 +1,3 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,11 +5,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign Up Form</title>
   <link rel="stylesheet" href="<?php echo base_url('assets/css/registerpage.css') ?>"> 
+  <script src="<?php echo base_url('assets/javascript/jquery.js') ?>"> </script>
+ 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
 </head>
 <body>
   <div class="container">
     <h1>Register</h1>
-    <form action="Welcome/register" method="post"> 
+    <form id="register-form" method="POST" enctype="multipart/form-data">
       <div class="form-group">
         <input type="text" id="firstname" name="firstname" placeholder="First Name" required>
       </div>
@@ -27,19 +28,59 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
       <div class="form-group">
         <input type="password" id="password" name="password" placeholder="Password" required>
-        <i class="fas fa-eye" id="togglePassword"></i> </div>
-      <div class="form-group">
-        <label for="profilePic">Attach a Profile Picture</label>
-        <input type="file" id="profilePic" name="profilePic">
       </div>
       <div class="button-container">
-        <button type="submit">Submit</button>
+        <button type="submit" value="create" id="create">Submit</button>
       </div>
     </form>
+    <div id="data"></div>
+    <div id="error-message" style="color: red; display: none;"></div>
+    <div id="success-message" style="color: green; display: none;"></div>
     <div class="login-account">
-      <a href="<?php echo base_url('login'); ?>" > Already have an account. Login</a>
+      <a href="<?php echo base_url('login'); ?>">Already have an account? Login</a>
     </div>
   </div>
 
-  <script src="https://kit.fontawesome.com/your_fontawesome_kit_id.js" crossorigin="anonymous"></script> </body>
+  <script>
+    $(document).ready(function() {
+      $("#create").click(function(event) {
+        event.preventDefault();
+        var firstname = $("input#firstname").val();
+        var lastname = $("input#lastname").val();
+        var email = $("input#email").val();
+        var username = $("input#username").val();
+        var password = $("input#password").val();
+
+        $.ajax({
+          method: "POST",
+          url: "<?php echo base_url(); ?>index.php/Welcome/register",
+          dataType: 'JSON',
+          data: {
+            firstname: firstname,
+            lastname: lastname,
+            email: email,
+            username: username,
+            password: password
+          },
+          success: function(data) {
+            if (data.status === 'error') {
+              $("#error-message").text(data.message).show();
+              $("#success-message").hide();
+            } else {
+              // console.log(data);
+              // $("#data").load(location.href + " #data");
+              // $("#register-form")[0].reset(); // Clear the form fields
+              // $("#error-message").hide();
+              // $("#success-message").text(data.message).show();
+              
+
+              window.location.href = "<?php echo base_url('login'); ?>";
+              alert('Registration successful');
+            }
+          }
+        });
+      });
+    });
+  </script>
+</body>
 </html>

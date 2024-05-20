@@ -69,7 +69,7 @@
 		<nav>
 			<i class='bx bx-menu' ></i>
             <a href="#" class="profile">
-				<img src="<?php echo $profilepic; ?>">
+				<img src="<?php echo base_url('assets/images/profile');?>">
 			</a>
 			<a href="#" class="nav-link"><?php echo $firstname." ".$lastname; ?></a>
 		</nav>

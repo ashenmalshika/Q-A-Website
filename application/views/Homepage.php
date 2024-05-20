@@ -12,7 +12,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
     <div class="container">
         <div class="header">
-            <img src="logo.png" alt="Logo" class="logo">
             <h1>Q & A</h1>
             <p>Find solutions, share knowledge, and connect with tech Experts.</p>
         </div>
