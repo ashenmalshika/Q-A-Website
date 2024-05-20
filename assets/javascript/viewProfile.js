@@ -1,6 +1,6 @@
-// Define a Backbone View for the profile
+// Defining a Backbone View 
 var ProfileView = Backbone.View.extend({
-    el: 'body', // Bind the view to the body element
+    el: 'body', 
 
     // Define event listeners
     events: {
@@ -8,12 +8,12 @@ var ProfileView = Backbone.View.extend({
         'click #cancelBtn': 'hideEditProfileForm'
     },
 
-    // Initialize the view and cache elements
+    // Initialize the view 
     initialize: function() {
         this.editProfileForm = this.$('#editProfileModal');
     },
 
-    // Function to toggle the visibility of the edit profile form
+    //toggle the visibility of the edit profile form
     toggleEditProfileForm: function() {
         if (this.editProfileForm.css('display') === 'none' || this.editProfileForm.css('display') === '') {
             this.editProfileForm.css('display', 'block');
@@ -23,7 +23,7 @@ var ProfileView = Backbone.View.extend({
         }
     },
 
-    // Function to hide the edit profile form
+    // hide the edit profile form
     hideEditProfileForm: function() {
         this.editProfileForm.css('display', 'none');
     }
